@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Synthexa AIDBMS - Assistente AI per Database">
+    <title>Synthexa AIDBMS</title>
+    <link rel="icon" href="/static/../assets/LOGO2.png" type="image/png">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Toggle Sidebar -->
+    <button class="sidebar-toggle" id="sidebarToggle" title="Menu">☰</button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Impostazioni -->
+        <button class="settings-btn" id="settingsBtn">Impostazioni</button>
+
+        <div class="config-panel" id="configPanel">
+            <h3>Configurazione Database</h3>
+
+            <label>Modalità</label>
+            <div class="radio-group">
+                <label><input type="radio" name="connMode" value="locale" checked> Percorso Locale</label>
+                <label><input type="radio" name="connMode" value="upload"> Carica File</label>
+            </div>
+
+            <!-- Percorso Locale -->
+            <div id="localPanel">
+                <label for="dbPath">Percorso file</label>
+                <input type="text" id="dbPath" value="db/ecommerce.db" placeholder="es. db/ecommerce.db">
+                <div id="dbStatus" style="margin-top:6px; font-size:0.8rem;"></div>
+            </div>
+
+            <!-- Upload File -->
+            <div id="uploadPanel" style="display:none;">
+                <label for="dbFile">Trascina Database</label>
+                <input type="file" id="dbFile" accept=".db,.sqlite">
+            </div>
+
+            <button class="reset-btn" id="resetBtn">Reset Sessione</button>
+
+            <label style="margin-top:12px;">Provider AI</label>
+            <div class="radio-group">
+                <label><input type="radio" name="aiProvider" value="ollama" checked> Ollama</label>
+                <label><input type="radio" name="aiProvider" value="lmstudio"> LM Studio</label>
+            </div>
+
+            <div id="lmstudioPanel" style="display:none;">
+                <label for="lmstudioUrl">URL LM Studio</label>
+                <input type="text" id="lmstudioUrl" value="http://localhost:1234/v1" placeholder="http://localhost:1234/v1">
+            </div>
+
+            <label for="modelSelect" style="margin-top:12px;">Modello AI</label>
+            <select id="modelSelect">
+                <option value="">Caricamento modelli...</option>
+            </select>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Cronologia Chat -->
+        <div class="db-explorer" id="chatHistory">
+            <h3>Cronologia Chat</h3>
+            <div id="historyContainer">
+                <div class="info-msg-sidebar">Nessuna query recente</div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Database Explorer -->
+        <div class="db-explorer" id="dbExplorer">
+            <h3>Database Explorer</h3>
+            <div id="schemaContainer">
+                <div class="warning-msg">Configura un database nelle impostazioni</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" id="mainArea">
+        <!-- Chat Area -->
+        <div class="chat-area" id="chatArea">
+            <div class="welcome-msg" id="welcomeMsg">
+                Benvenuto in <strong>&nbsp;Synthexa AIDBMS</strong>. Scrivi una domanda per interrogare il database.
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-area">
+            <div class="chat-input-wrapper">
+                <input type="text" class="chat-input" id="chatInput"
+                       placeholder="Esegui una ricerca o modifica il DB..."
+                       autocomplete="off">
+                <button class="send-btn" id="sendBtn" title="Invia">➤</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
