@@ -30,6 +30,9 @@ db/*.db
 *.sqlite
 *.sqlite3
 
+# Documentation (kept locally, not published)
+docs/
+
 # Logs
 *.log
 logs/

@@ -18,9 +18,6 @@
    python src/app.py
    ```
 
-## 📖 Documentazione
-Per una spiegazione dettagliata dell'architettura e dei componenti, consulta il file [PROGETTO.md](./PROGETTO.md).
-
 ## 🔒 Privacy e dati
 - I dati in `db/ecommerce.db` sono **fittizi e sintetici** (email su dominio riservato `example.com`).
 - I database caricati dall'utente (`db/working_database.db`) e i file locali/`.sqlite` sono esclusi da Git tramite `.gitignore`.
